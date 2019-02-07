@@ -1,0 +1,44 @@
+{{ define "main" }}
+<main>
+    <h1>{{ .Title }}</h1>
+  
+    <div class="catalogue">
+
+      <ul>
+        {{ range $taxonomy, $taxonomies := .Site.Taxonomies }}
+
+          {{ if (ne $taxonomy "tags") }}
+
+          {{ $name := i18n (printf "title-taxonomy-%s" ($taxonomy) ) | default (title $taxonomy) }}
+
+          <li data-term="{{ $name }}">
+            {{ $name }}
+
+            <ul>
+              {{ range $term, $value := $taxonomies }}
+
+              {{ $name := i18n (printf "title-taxonomy-%s" ($term) ) | default (title $term) }}
+
+              <li data-term="{{ $name }}">
+                {{ $name }}
+
+                <ul>
+                {{ range $value.Pages }}
+                  <li data-term="{{ .LinkTitle }}">
+                    <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                  </li>
+                {{ end }}
+                </ul>
+
+              </li>
+              {{ end }}
+            </ul>
+          </li>
+
+          {{ end }}
+
+        {{ end }}
+      </ul>
+    </div>
+  </main>
+  {{ end }}

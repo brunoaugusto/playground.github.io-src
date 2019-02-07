@@ -1,0 +1,19 @@
+{{ $format := ( ($.Get "format") | default "markdown" ) }}
+
+{{ with (.Get "file") }}
+
+    {{ if (fileExists (.) ) }}
+
+        {{ if (eq $format "markdown") }}
+            {{ with ($.Site.GetPage (.)) }}
+                {{ replace .Content .Summary "" | safeHTML }}
+            {{ end }}
+        {{ end }}
+
+    {{ else }}
+        <div class="alert alert-warning mt-3" role="alert">
+          File <strong>{{ (print .) }}</strong> could not be found
+        </div>
+    {{ end }}
+
+{{ end }}

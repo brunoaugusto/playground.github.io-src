@@ -1,0 +1,17 @@
+---
+baseURL: "https://brunoaugusto.github.io/playground/"
+languageCode: "en-us"
+title: "Hugo Debugging Playground"
+theme: "tale"
+pluralizelisttitles: false
+removePathAccents: true
+disableFastRender: true
+paginate: 5
+preserveTaxonomyNames: true
+disableHugoGeneratorInject: true
+publishDir: ../playground
+taxonomies:
+  tag: tags
+  brand: brand
+  country: country
+---

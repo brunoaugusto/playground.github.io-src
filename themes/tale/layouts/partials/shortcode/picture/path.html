@@ -1,0 +1,7 @@
+Loaded Data File (matches <a href="{{ "another-page" | absURL }}">Pluggable Page's</a> HEAD's): {{ $.Page.Scratch.Get "data" }}<br /><br />
+
+Is it a Map: {{ reflect.IsMap ($.Page.Scratch.Get "data") }}<br /><br />
+
+{{ if reflect.IsMap ($.Page.Scratch.Get "data") }}
+    Then read the Picture Path: {{ ($.Page.Scratch.Get "data").picture.path }}
+{{ end }}
